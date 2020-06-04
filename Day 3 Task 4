@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        int lucky=0;
+        int cnt;
+        for(int i=0;i<arr.size();i++){
+            cnt=0;
+            for(int j=0;j<arr.size();j++){
+                if(arr[i]==arr[j])
+                    cnt++;
+            }
+            if(cnt==arr[i]){
+                    lucky=max(lucky,cnt);
+                  }
+        }
+        if(lucky!=0)
+            return lucky;
+        else
+            return -1;
+    }
+};
