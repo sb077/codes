@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void search(vector<int> a, int n){
+    sort(a.begin(),a.end());
+    for(int i=0;i<n+1;){
+        if(a[i]==a[i+1]){
+            cout<<a[i]<<" ";
+            i=i+2;
+            }
+        else
+            i++;
+    }
+    cout<<endl;
+}
+int main() {
+    vector<int> a;
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        int n;
+        cin>>n;
+        int x;
+        for(int j=0;j<n+2;j++){
+            cin>>x;
+            a.push_back(x);
+        }
+        search(a,n);
+    }
+	//code
+	return 0;
+}
+
