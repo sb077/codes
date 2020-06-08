@@ -1,0 +1,20 @@
+//subtract-the-product-and-sum-of-digits-of-an-integer
+
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        vector<int> a;
+        while(n>0){
+            int rem=n%10;
+            a.push_back(rem);
+            n=n/10;
+        }
+        int sum=0,prod=1;
+        for(int i=0;i<a.size();i++){
+            sum=sum+a[i];
+            prod=prod*a[i];
+        }
+        return prod-sum;
+        
+    }
+};
