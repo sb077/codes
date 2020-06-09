@@ -1,0 +1,36 @@
+//Spiral matrix
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        if(matrix.size()==0)
+            return {};
+        int sr=0,sc=0;
+        vector<int> vec;
+        int er=matrix.size()-1;
+        int ec=matrix[0].size()-1;
+        while((sr<=er)&&(sc<=ec)){
+            for(int i=sc;i<=ec;i++)
+                vec.push_back(matrix[sr][i]);
+                           
+            
+            for(int i=sr+1;i<=er;i++)
+                vec.push_back(matrix[i][ec]);
+        
+            if((sr<er)&&(ec>sc)){
+                for(int i=ec-1;i>=sc+1;i--)
+                    vec.push_back(matrix[er][i]);
+
+                for(int i=er;i>=sr+1;i--)
+                    vec.push_back(matrix[i][sc]);
+    
+            }
+            sr++;
+            ec--;
+            er--;
+            sc++;
+        }
+        
+        return vec;
+    }
+};
