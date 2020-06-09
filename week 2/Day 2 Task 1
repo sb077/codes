@@ -1,0 +1,17 @@
+//Defanging an IP address
+
+using namespace std;
+
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        string ins="";
+        for(int i=0;i<address.length();i++){
+            if(address[i]=='.')
+                ins=ins+"[.]";
+        else
+            ins += address[i];
+        }
+        return ins;
+    }
+};
