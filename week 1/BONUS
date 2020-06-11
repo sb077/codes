@@ -1,0 +1,19 @@
+//flipping an image
+
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& a) {
+        for(int i=0;i<a.size();i++){
+            reverse(a[i].begin(),a[i].end());
+        }
+        for(int i=0;i<a.size();i++){
+            replace(a[i].begin(),a[i].end(),1,2);
+            replace(a[i].begin(),a[i].end(),0,-1);
+        }
+        for(int i=0;i<a.size();i++){
+            replace(a[i].begin(),a[i].end(),2,0);
+            replace(a[i].begin(),a[i].end(),-1,1);
+        }
+        return a;
+    }
+};
