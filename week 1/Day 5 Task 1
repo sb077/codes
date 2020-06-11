@@ -1,0 +1,22 @@
+//intersection of sets
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> res;
+        set<int> numsA;
+        set<int> numsB;
+        for(int i : nums1){
+            numsA.insert(i);
+        }
+        for(int i : nums2){
+            numsB.insert(i);
+        }
+        for(int i : numsA){
+            if(numsB.find(i) != numsB.end()){
+                res.push_back(i);
+            }
+        }
+        return res;
+    }
+};
