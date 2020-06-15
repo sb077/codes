@@ -1,0 +1,58 @@
+//Longest balanced substring
+
+#include <bits/stdc++.h> 
+using namespace std; 
+
+
+int maxBalancedStr(string s) { 
+ 
+	int open1 = 0, close1 = 0; 
+	int open2 = 0, close2 = 0; 
+	int open3 = 0, close3 = 0; 
+
+
+	for (int i = 0; i < s.length(); i++) { 
+
+
+		switch (s[i]) { 
+		case '(': 
+			open1++; 
+			break; 
+		case ')': 
+			close1++; 
+			break; 
+		case '{': 
+			open2++; 
+			break; 
+		case '}': 
+			close2++; 
+			break; 
+		case '[': 
+			open3++; 
+			break; 
+		case ']': 
+			close3++; 
+			break; 
+		} 
+	} 
+
+	int maxLen = 2 * min(open1, close1) 
+				+ 2 * min(open2, close2) 
+				+ 2 * min(open3, close3); 
+
+	return maxLen; 
+} 
+
+// Driven code 
+int main() 
+{ 
+	int t;
+    cin>>t;
+    while(t!=0){
+    string s ;
+    cin>>s;
+	cout << maxBalancedStr(s)<<endl; 
+    t--; 
+    }
+	return 0; 
+} 
