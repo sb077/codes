@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int getKth(int l, int h, int k) {
+        vector<pair<int,int> > p;
+        for(int i=l;i<=h;i++){
+            int x=i;
+            int count=0;
+            while(x!=1){
+                
+                if(x%2==0)
+                    x=x/2;
+                
+                else
+                    x=(x*3)+1;
+                
+                count++;
+               }
+            p.push_back(make_pair(count,i));
+                }
+            std:: nth_element(p.begin(),p.begin()+k-1,p.end());
+            return p[k-1].second;
+    }
+};
