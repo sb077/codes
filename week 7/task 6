@@ -1,0 +1,201 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+/* K th smallest element
+int main(){
+    int n;
+    cin>> n;
+    int k;
+    cin>>k;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    priority_queue<int> maxh;
+    for(int i=0;i<n;i++){
+        maxh.push(a[i]);
+        if(maxh.size()>k){
+            maxh.pop();
+        }
+    }
+    cout<<maxh.top();
+    return 0;
+}
+*/
+//k largest elements
+/*
+int main(){
+    int n;
+    cin>> n;
+    int k;
+    cin>>k;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    priority_queue<int,vector<int>,greater<int> > minh;
+    for(int i=0;i<n;i++){
+        minh.push(a[i]);
+        if(minh.size()>k)
+            minh.pop();
+    }
+    while(minh.size()>0){
+        cout<<minh.top()<<" ";
+        minh.pop();
+    }
+    return 0;
+}*/
+//K sorted array
+/*
+int main(){
+    int n;
+    cin>> n;
+    int k;
+    cin>>k;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    priority_queue<int,vector<int>,greater<int> > minh;
+    for(int i=0;i<n;i++){
+        minh.push(a[i]);
+        if(minh.size()>k){
+            cout<<minh.top()<<" ";
+            minh.pop();
+        }
+    } 
+    while(minh.size()>0){
+        cout<<minh.top()<<" ";
+        minh.pop();
+    }
+    return 0;
+}
+*/
+//K closest num
+/*int main(){
+    int n;
+    cin>> n;
+    int k;
+    cin>>k;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    int x;
+    cin>>x;
+    priority_queue<pair<int,int> > maxh;
+    for(int i=0;i<n;i++){
+        maxh.push(make_pair(abs(x-a[i]),a[i]));
+        if(maxh.size()>k){
+            maxh.pop();
+        }
+    }
+    while(maxh.size()>0){
+        cout<<maxh.top().second<<" ";
+        maxh.pop();
+    }
+    
+    return 0;
+}
+*/
+//Top K frequent numbers
+/*
+int main(){
+    int n;
+    cin>> n;
+    int k;
+    cin>>k;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    unordered_map<int,int> mp;
+    for(int i=0;i<n;i++){
+        mp[a[i]]++;
+    }
+    priority_queue< pair<int,int>,vector< pair<int,int> >,greater< pair<int,int> > >minh;
+    for(auto x: mp){
+        minh.push(make_pair(x.second,x.first));
+        if(minh.size()>k)
+            minh.pop();
+    }
+    while(minh.size()>0){
+        cout<<minh.top().second<<" ";
+        minh.pop();
+    }
+    return 0;
+}
+*/
+//Frequency sort
+/*
+int main(){
+    int n;
+    cin>> n;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    //priority_queue<pair<int,int> > maxh;
+    map<int,int> mp;
+    for(int i=0;i<n;i++){
+        mp[a[i]]++;
+    }
+    for(auto x: mp){
+        for(int i=0;i<x.second;i++){
+            cout<<x.first<<" ";
+        }
+        cout<<"\n";
+   }
+
+    return 0;
+    }
+*/
+//Reorganize string
+string Reorganize(string s){
+    unordered_map<char,int> mp;
+    for(int i=0;i<s.length();i++){
+        mp[s[i]]++;
+    }
+    priority_queue<pair<int,char> > q;
+    for(auto x:mp){
+        q.push(make_pair(x.second,x.first));
+    }
+    string ans="";
+    while(!q.empty()){
+        if(q.size()>=2){
+            pair<int,char> p1;
+            pair<int,char> p2;
+            p1=q.top();
+            q.pop();
+            p2=q.top();
+            q.pop();
+            ans+=p1.second;
+            ans+=p2.second;
+            p1.first--;
+            p2.first--;
+            if(p1.first>0){
+                q.push(p1);
+            }
+            if(p2.first>0){
+                q.push(p2);
+            }
+        }
+        else if(q.size()==1){
+            if(q.top().first>1){
+                return "";
+            }
+            else{
+                ans=ans+q.top().second;
+                q.pop();
+            }
+        }
+    }
+    return ans;
+}
+int main(){
+    string s;
+    cin>>s;
+    string ans=Reorganize(s);
+    cout<<ans;
+    return 0;
+}
